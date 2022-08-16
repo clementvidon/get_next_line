@@ -42,7 +42,7 @@ Usage: `bash gnldiff.sh <file_path>`
 
 Example:
 
-    head -9999 /dev/urandom > file
+    head -4242 /dev/urandom > file
     bash gnldiff.sh file
 
 ## Tools
