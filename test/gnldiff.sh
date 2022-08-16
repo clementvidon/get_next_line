@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# @file         gnldiff.sh
 # @author       cvidon@42
+# @date         220816
 #
-# @brief        Compare get_next_line and cat output.
+# @brief        Check get_next_line output accuracy.
 #
 # @param[in]    A file to read.
-# @return       OK if there are no difference otherwise KO plus a diff.log.
+# @return       OK if there are no difference otherwise KO + create diff.log
 
 
 ## Check if get_next_line exist.
@@ -21,7 +23,7 @@ fi
 
 if [ "$#" -eq 0 ] || [ "$#" -gt 1 ]
 then
-    echo "Usage: bash diff.sh <file_name>"
+    echo "Usage: bash gnldiff.sh <file_path>"
     exit 1
 fi
 
