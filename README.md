@@ -27,9 +27,9 @@ For example: `./get_next_line main.c`
 
 ***Makefile rules***
 
-- `make` -- compiles gnl.
+- `make` -- compiles get_next_line.
 - `make clean` -- deletes object files.
-- `make fclean` -- deletes object files and gnl.
+- `make fclean` -- deletes object files and get_next_line.
 - `make re` -- fclean + make.
 
 ##  Tools
