@@ -14,7 +14,7 @@ file descriptor one line at a time until the end of it.
 ##  Index
 
 **[Usage](#Usage)**<br>
-**[Usage](#Tools)**<br>
+**[Tools](#Tools)**<br>
 
 ##  Usage
 
