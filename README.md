@@ -14,6 +14,7 @@ file descriptor one line at a time until the end of it.
 ##  Index
 
 **[Usage](#Usage)**<br>
+**[Tester](#Tester)**<br>
 **[Tools](#Tools)**<br>
 
 ##  Usage
@@ -31,6 +32,18 @@ For example: `./get_next_line main.c`
 - `make clean` -- deletes object files.
 - `make fclean` -- deletes object files and get_next_line.
 - `make re` -- fclean + make.
+
+##  Tester
+
+**[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
+a log file (`diff.log`) if something went wrong.
+
+Usage: `bash gnldiff.sh <file_path>`
+
+Example:
+
+    head -9999 /dev/urandom > file
+    bash gnldiff.sh file
 
 ##  Tools
 

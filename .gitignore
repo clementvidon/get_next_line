@@ -15,3 +15,7 @@ get_next_line
 # Tags #
 ########
 tags
+
+# Misc #
+########
+*.log
