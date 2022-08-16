@@ -1,17 +1,15 @@
 
 #           GNL - GET_NEXT_LINE - 42
 
+***Whole code documented with docstrings.***
+
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
 file descriptor one line at a time until the end of it.
 
 > "May it be a file, stdin, or even later a network connection, you will always
 > need a way to read content line by line. It is time to start working on this
-> function, which will be essential for your future projects."
-
-**[Subject](https://cdn.intra.42.fr/pdf/pdf/57350/en.subject.pdf)**
-
-***Whole code documented with docstrings.***
+> function, which will be essential for your future projects." - [Subject](https://cdn.intra.42.fr/pdf/pdf/57350/en.subject.pdf)
 
 ##  Index
 
