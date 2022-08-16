@@ -41,7 +41,7 @@ fi
 
 result=$(diff <(tr -d '\0' < "$1") <(./get_next_line "$1" 2>/dev/null) | wc -l)
 
-#              "tr -d '\0' <
+#               tr -d '\0' <
 #                --------  _
 #                   |      +-- built-in replacement for cat
 #                   +--------- removes NULL BYTE characters

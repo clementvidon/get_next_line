@@ -1,5 +1,5 @@
 
-#           GNL - GET_NEXT_LINE - 42
+# GNL - GET_NEXT_LINE - 42
 
 ***Whole code documented with docstrings.***
 
@@ -11,13 +11,13 @@ file descriptor one line at a time until the end of it.
 > need a way to read content line by line. It is time to start working on this
 > function, which will be essential for your future projects." - [Subject](https://cdn.intra.42.fr/pdf/pdf/57350/en.subject.pdf)
 
-##  Index
+## Index
 
 **[Usage](#Usage)**<br>
 **[Tester](#Tester)**<br>
 **[Tools](#Tools)**<br>
 
-##  Usage
+## Usage
 
 Add `get_next_line.h` to your project header to access the function.
 
@@ -33,7 +33,7 @@ For example: `./get_next_line main.c`
 - `make fclean` -- deletes object files and get_next_line.
 - `make re` -- fclean + make.
 
-##  Tester
+## Tester
 
 **[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
 a log file (`diff.log`) if something went wrong.
@@ -45,7 +45,7 @@ Example:
     head -9999 /dev/urandom > file
     bash gnldiff.sh file
 
-##  Tools
+## Tools
 
 - **[ft_mallocator](https://github.com/tmatis/ft_mallocator)**
 
