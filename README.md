@@ -1,7 +1,7 @@
 
 #           GNL - GET_NEXT_LINE - 42
 
-Get the next line of text available on a file descriptor.<br>
+Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
 file descriptor one line at a time until the end of it.
 
