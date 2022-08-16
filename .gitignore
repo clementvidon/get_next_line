@@ -12,10 +12,7 @@ get_next_line
 *.swp
 *~
 
-# Tags #
+# Other #
 ########
 tags
-
-# Misc #
-########
 *.log
