@@ -1,0 +1,17 @@
+# Compiled source #
+###################
+*.o
+*.a
+*.out
+*.so
+get_next_line
+
+# Editor Files #
+################
+*.swo
+*.swp
+*~
+
+# Tags #
+########
+tags
