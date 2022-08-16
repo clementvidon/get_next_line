@@ -1,5 +1,5 @@
 
-# GNL - GET_NEXT_LINE - 42
+# GNL - GET NEXT LINE - 42
 
 ***Whole code documented with docstrings.***
 
