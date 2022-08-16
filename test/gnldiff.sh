@@ -4,6 +4,9 @@
 # @author       cvidon@42
 # @date         220816
 #
+# Make sure to use a BUFFER_SIZE of 1 if your <file> parameter contains special
+# characters like those from binary file or /dev/urandom.
+#
 # @brief        Check get_next_line output accuracy.
 #
 # @param[in]    A file to read.
@@ -15,7 +18,7 @@
 
 if [ ! -f get_next_line ]
 then
-    make;
+    make
 fi
 
 ## If the number of arguments
@@ -52,14 +55,15 @@ result=$(diff <(tr -d '\0' < "$1") <(./get_next_line "$1" 2>/dev/null) | wc -l)
 if [ $result -eq 0 ]
 then
     tput setaf 2
-    echo "OK";
+    echo "OK"
     tput sgr0
 else
     tput setaf 1
-    echo "KO";
+    echo "KO"
     tput sgr0
-    echo "  Press ENTER to create diff.log";
+    echo -n "Press ENTER to generate log..."
     read -p ""
     diff <(tr -d '\0' < "$1") <(./get_next_line "$1" 2>/dev/null) > diff.log
+    ls -l diff.log
 fi
 exit 0

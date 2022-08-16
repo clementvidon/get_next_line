@@ -13,10 +13,25 @@
 #include "get_next_line.h"
 
 /*
+ ** @brief      Check is the given string has a newline.
+ **
+ ** @param[in]  str a string.
+ ** @return     True or false.
+ */
+
+static int	ft_has_nl(char const *str)
+{
+	if (str)
+		while (*str && *str != '\n')
+			str++;
+	return (str && *str == '\n');
+}
+
+/*
  ** @brief      Extract the first line it finds in temp.
  **
  ** @param[in]  temp can be the next line [ and more ] or NULL.
- ** @return     The next line to taken from temp content.
+ ** @return     The next line taken from temp content.
  */
 
 static char	*ft_newline(char const *temp)

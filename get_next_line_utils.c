@@ -13,21 +13,6 @@
 #include "get_next_line.h"
 
 /*
- ** @brief      Check is the given string has a newline.
- **
- ** @param[in]  str a string.
- ** @return     True or false.
- */
-
-size_t	ft_has_nl(char const *str)
-{
-	if (str)
-		while (*str != '\0' && *str != '\n')
-			str++;
-	return (str && *str == '\n');
-}
-
-/*
  ** @brief      Return the length of the given string.
  **
  ** We use pointers instead of counter variable because

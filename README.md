@@ -42,8 +42,16 @@ Usage: `bash gnldiff.sh <file_path>`
 
 Example:
 
-    head -4242 /dev/urandom > file
-    bash gnldiff.sh file
+    cat Makefile > file; bash gnldiff.sh file
+
+    cat ../*.[ch] > file; bash gnldiff.sh file
+
+**Make sure to** use a `BUFFER_SIZE` of 1 if your `<file>` parameter contains
+special characters like those from binary file or `/dev/urandom` like:
+
+    cat /bin/cat > file; bash gnldiff.sh file
+
+    head -4242 /dev/urandom > file; bash gnldiff.sh file
 
 ## Tools
 
