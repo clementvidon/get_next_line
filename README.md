@@ -35,7 +35,7 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
-**[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
+[Gnldiff](test/gnldiff.sh) is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
 Usage: `bash gnldiff.sh <file_path>`
@@ -55,7 +55,7 @@ special characters like those from binary file or `/dev/urandom` like:
 
 ## Tools
 
-- **[ft_mallocator](https://github.com/tmatis/ft_mallocator)**
+- [ft_mallocator](https://github.com/tmatis/ft_mallocator)
 
 - valgrind: `valgrind -q --leak-check=yes --show-leak-kinds=all`
 
