@@ -11,29 +11,51 @@
 #
 # @param[in]    A file to read.
 # @return       OK if there are no difference otherwise KO + create diff.log
+#
 
-
-## Check if get_next_line exist.
+# TODO replace 'cat' with 'getline'
+#
+## Check the number of arguments
 ################################
+#
+# if [ ! "$#" -eq 2 ]
+# then
+#     echo "Usage: bash gnldiff.sh <file_path> [ <buffer_size> ]"
+#     exit 1
+# fi
+#
+## Check arguments validity
+###########################
+#
+# size=$2
+# if [ $size -lt 0 ] || [ $size -ge 2147483647 ]
+# then
+#     echo "Buffer size has to be between zero and one billion"
+#     exit 1
+# fi
+
+## Check if get_next_line exist
+###############################
 
 if [ ! -f get_next_line ]
 then
     make
 fi
 
-## If the number of arguments
-#############################
+## Check the number of arguments
+################################
 
-if [ "$#" -eq 0 ] || [ "$#" -gt 1 ]
+if [ ! "$#" -eq 1 ]
 then
     echo "Usage: bash gnldiff.sh <file_path>"
     exit 1
 fi
 
-## If the argument validity
+## Check arguments validity
 ###########################
 
-if [ ! -f "$1" ] || [ ! -r "$1" ]
+file=$1
+if [ ! -f "$file" ] || [ ! -r "$file" ]
 then
     echo "File error"
     exit 1
@@ -42,7 +64,7 @@ fi
 ## Operate a diff
 #################
 
-result=$(diff <(tr -d '\0' < "$1") <(./get_next_line "$1" 2>/dev/null) | wc -l)
+result=$(diff <(tr -d '\0' < "$file") <(./get_next_line "$file" 2>/dev/null) | wc -l)
 
 #               tr -d '\0' <
 #                --------  _
@@ -63,7 +85,7 @@ else
     tput sgr0
     echo -n "Press ENTER to generate log..."
     read -p ""
-    diff <(tr -d '\0' < "$1") <(./get_next_line "$1" 2>/dev/null) > diff.log
+    diff <(tr -d '\0' < "$file") <(./get_next_line "$file" 2>/dev/null) > diff.log
     ls -l diff.log
 fi
 exit 0
