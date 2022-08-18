@@ -36,7 +36,7 @@ size_t	ft_strlen(char const *str)
  ** @brief      Duplicate the given string into a new malloc-ed memory space.
  **
  ** @param[in]  The string to duplicate.
- ** @return     A pointer to the duplication.
+ ** @return     A pointer to the duplication or NULL.
  */
 
 char	*ft_strdup(char const *s1)
@@ -60,7 +60,7 @@ char	*ft_strdup(char const *s1)
  **
  ** @param[in]  s1 the first string (will be free).
  ** @param[in]  s2 the second string.
- ** @return     A string made of s1 + s2.
+ ** @return     A string made of s1 + s2 or NULL.
  */
 
 char	*ft_strjoin_free_s1(char *s1, char const *s2)
@@ -93,7 +93,7 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
  ** @param[in]  str the string that contain the cherished substring.
  ** @param[in]  start the beginning of the substring.
  ** @param[in]  size the length of the substring.
- ** @return     The cherished substring.
+ ** @return     The cherished substring or NULL.
  */
 
 char	*ft_substr(char const *str, unsigned int start, size_t size)
