@@ -5,15 +5,9 @@ NAME		= get_next_line
 
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror -Wconversion -Wsign-conversion -g
-CPPFLAGS	= -I.. -Ilibft_42/include
+CPPFLAGS	= -I..
 SRCS		= main.c \
 			  ../get_next_line.c \
-			  ../get_next_line_utils.c \
-			  ../ libft_42/src/str/ft_strchr.c \
-			  ../ libft_42/src/str/ft_strlen.c \
-			  ../ libft_42/src/str/ft_strdup.c \
-			  ../ libft_42/src/str/ft_strjoin.c \
-			  ../ libft_42/src/str/ft_substr.c \
 			  ../get_next_line_utils.c
 OBJS		:= $(SRCS:%.c=%.o)
 
