@@ -85,7 +85,7 @@ char	*ft_strdup(char const *str)
  **
  ** @param[in]  s1 the first string (will be free).
  ** @param[in]  s2 the second string.
- ** @return     A string made of s1 + s2 or NULL.
+ ** @return     A string made of s1 + s2 or NULL if malloc fail.
  */
 
 char	*ft_strjoin_free_s1(char *s1, char const *s2)
@@ -115,7 +115,7 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
  ** @param[in]  str the string that contain the cherished substring.
  ** @param[in]  start the beginning of the substring.
  ** @param[in]  size the length of the substring.
- ** @return     The cherished substring or NULL.
+ ** @return     The cherished substring or NULL if malloc fail.
  */
 
 char	*ft_substr(const char *str, unsigned int start, size_t size)

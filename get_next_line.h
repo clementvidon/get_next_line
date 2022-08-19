@@ -32,7 +32,7 @@
  */
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 2048
 # endif
 
 /*
@@ -47,8 +47,6 @@
 /*
  ** =========[ Prototypes ]========
  */
-
-char	*get_next_line(int fd);
 
 /*
  ** get_next_line_utils.c
