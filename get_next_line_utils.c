@@ -13,13 +13,37 @@
 #include "get_next_line.h"
 
 /*
- ** @brief      Return the length of the given string.
+ ** @brief      Locate a character in string.
  **
- ** We use pointers instead of counter variable because
- ** it is slightly less power consuming.
+ ** "The strchr() function locates the first occurrence of c (converted to a
+ ** char) in the string pointed to by s.  The terminating null character is
+ ** considered to be part of the string; therefore if c is ‘\0’, the functions
+ ** locate the terminating ‘\0’."
  **
- ** @param      str a string.
- ** @return		The string len.
+ ** @see        STRCHR(3) <string.h>
+ */
+
+char	*ft_strchr(char const *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == c)
+		return ((char *)s);
+	return (0);
+}
+
+/*
+ ** @brief      Find length of string.
+ **
+ ** "The strlen() function computes the length of the string s.  The strnlen()
+ ** function attempts to compute the length of s, but never scans beyond the **
+ ** first maxlen bytes of s."
+ **
+ ** @see        STRLEN(3) <string.h>
  */
 
 size_t	ft_strlen(char const *str)
@@ -33,26 +57,27 @@ size_t	ft_strlen(char const *str)
 }
 
 /*
- ** @brief      Duplicate the given string into a new malloc-ed memory space.
+ ** @brief      Save a copy of a string.
  **
- ** @param[in]  The string to duplicate.
- ** @return     A pointer to the duplication or NULL.
+ ** "The strdup() function allocates sufficient memory for a copy of the string
+ ** s1, does the copy, and returns a pointer to it.  The pointer may
+ ** subsequently be used as an argument to the function free(3)."
+ **
+ ** @see        STRDUP(3) <string.h>
  */
 
-char	*ft_strdup(char const *s1)
+char	*ft_strdup(char const *str)
 {
-	char	*s2;
-	char	*p2;
+	char	*dup;
+	char	*ptr;
 
-	if (!s1)
+	dup = malloc (sizeof (*dup) * (ft_strlen(str) + 1));
+	if (!dup)
 		return (NULL);
-	s2 = malloc (sizeof (*s2) * (ft_strlen(s1) + 1));
-	if (!s2)
-		return (NULL);
-	p2 = s2;
-	while (*s1)
-		*p2++ = *s1++;
-	return (*p2 = 0, s2);
+	ptr = dup;
+	while (*str)
+		*ptr++ = *str++;
+	return (*ptr = 0, dup);
 }
 
 /*
@@ -69,12 +94,6 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
 	char	*p3;
 	char	*p1;
 
-	if (!s1 && s2)
-		return (ft_strdup (s2));
-	if (s1 && !s2)
-		return (ft_strdup (s1));
-	if (!s1 && !s2)
-		return (ft_strdup (""));
 	s3 = malloc (sizeof (*s3) * (ft_strlen (s1) + ft_strlen (s2) + 1));
 	if (!s3)
 		return (free (s1), NULL);
@@ -88,7 +107,10 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
 }
 
 /*
- ** @brief      Extract a substring from a larger string (with malloc).
+ ** @brief      Extract substring from string.
+ **
+ ** "Allocates (with malloc(3)) and returns a substring from the string s.
+ ** The substring begins at index start and is of maximum size len."
  **
  ** @param[in]  str the string that contain the cherished substring.
  ** @param[in]  start the beginning of the substring.
@@ -96,16 +118,14 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
  ** @return     The cherished substring or NULL.
  */
 
-char	*ft_substr(char const *str, unsigned int start, size_t size)
+char	*ft_substr(const char *str, unsigned int start, size_t size)
 {
 	size_t	len;
 	char	*sub;
 
-	if (!str)
-		return (NULL);
 	len = ft_strlen (str);
 	if (start >= len)
-		return (NULL);
+		return (ft_strdup(""));
 	if (len - start < size)
 		size = len - start;
 	sub = malloc (sizeof (*sub) * (size + 1));

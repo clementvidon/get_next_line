@@ -48,7 +48,7 @@ fclean: clean
 re : fclean all
 
 norm:
-	@norminette | grep -v "OK" || true
+	@norminette ../*.[ch]| grep -v "OK" || true
 	@$(ECHO)"$(G)checked norm$(END)\n"
 
 update:

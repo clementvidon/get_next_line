@@ -35,7 +35,7 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
-[Gnldiff](test/gnldiff.sh) is a simple tester that check `get_next_line` output accuracy and create
+- [Gnldiff](test/gnldiff.sh) is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
 Usage: `bash gnldiff.sh <file_path>`
@@ -52,6 +52,9 @@ special characters like those from binary file or `/dev/urandom` like:
     cat /bin/cat > file; bash gnldiff.sh file
 
     head -4242 /dev/urandom > file; bash gnldiff.sh file
+
+- [gnlTester](https://github.com/Tripouille/gnlTester)
+
 
 ## Tools
 

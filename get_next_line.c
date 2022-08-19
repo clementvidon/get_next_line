@@ -11,21 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/*
- ** @brief      Check is the given string has a newline.
- **
- ** @param[in]  str a string.
- ** @return     True or false.
- */
-
-static int	ft_has_nl(char const *str)
-{
-	if (str)
-		while (*str && *str != '\n')
-			str++;
-	return (str && *str == '\n');
-}
+#include <stdio.h>
 
 /*
  ** @brief      Extract the first line it finds in temp.
@@ -38,6 +24,8 @@ static char	*ft_newline(char const *temp)
 {
 	size_t	i;
 
+	if (*temp == '\0')
+		return (NULL);
 	i = 0;
 	while (temp[i] != '\0' && temp[i] != '\n')
 		i++;
@@ -101,17 +89,17 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (NULL);
 	rd = 1;
-	while (rd && !ft_has_nl (temp[fd]))
+	if (!temp[fd])
+		temp[fd] = ft_strdup ("");
+	while (rd && !ft_strchr (temp[fd], '\n'))
 	{
 		rd = read (fd, buf, BUFFER_SIZE);
 		if (rd == -1)
-			return (free (buf), NULL);
+			return (free (buf), free (temp[fd]), NULL);
 		buf[rd] = '\0';
 		temp[fd] = ft_strjoin_free_s1 (temp[fd], buf);
 	}
 	free (buf);
-	if (!temp[fd])
-		return (NULL);
 	line = ft_newline (temp[fd]);
 	temp[fd] = ft_newtemp (temp[fd]);
 	return (line);
