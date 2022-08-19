@@ -31,7 +31,7 @@ san_addr: CC := gcc
 san_addr: CFLAGS := $(CFLAGS) -fsanitize=address,undefined,signed-integer-overflow
 san_addr: $(NAME)
 
-$(NAME): update $(OBJS)
+$(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME)
 	@$(ECHO)"$(G)created $(END)$(NAME)\n"
 
