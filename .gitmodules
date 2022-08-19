@@ -4,3 +4,9 @@
 [submodule "test/gnlTester"]
 	path = test/gnlTester
 	url = git@github.com:Tripouille/gnlTester.git
+[submodule "libft_42"]
+	path = libft_42
+	url = git@github.com:clemedon/libft_42.git
+[submodule "test/libft_42"]
+	path = test/libft_42
+	url = git@github.com:clemedon/libft_42.git
