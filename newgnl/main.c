@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	if (ac != 2)
-		return (write (2, "Usage: ./get_next_line <path_to_file>\n", 30), 1);
+		return (write (2, "Usage: ./get_next_line <path_to_file>\n", 38), 1);
 	if (ft_strlen(av[1]) >= 100)
 	{
 		write (2, "get_next_line: \033[31mFile name too long\033[0m\n", 44);

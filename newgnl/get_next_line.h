@@ -32,7 +32,7 @@
  */
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
+#  define BUFFER_SIZE 1
 # endif
 
 /*
@@ -54,6 +54,7 @@
  ** Libft functions required by get_next_line_utils.
  */
 
+char	*ft_strchr(char const *s, int c);
 size_t	ft_strlen(char const *str);
 char	*ft_strdup(char const *s1);
 char	*ft_strjoin_free_s1(char *s1, char const *s2);
@@ -65,7 +66,6 @@ char	*ft_substr(char const *str, unsigned int start, size_t size);
  ** Read each line of the given file, one at a function call.
  */
 
-/* static int ft_has_nl(const char *str) */
 /* static char *ft_newline(char const *temp) */
 /* static char *ft_newtemp(char *temp) */
 char	*get_next_line(int fd);

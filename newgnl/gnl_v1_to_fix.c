@@ -10,62 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /*
- ** @brief		Check that string has newline.
+ ** @brief      Extract the first line it finds in temp and update temp to pass
+ **             to the next line it contains or NULL if there is nothing left to
+ **             read.
  **
- ** @param		str a string.
- ** @return		True or false.
- */
-
-static size_t	ft_has_nl(const char *str)
-{
-	if (str)
-		while (*str && *str != '\n')
-			str++;
-	return (str && *str == '\n');
-}
-
-/*
- ** @brief      Extract the first line it finds in temp.
- **
- ** @param[in]  temp can be the next line [ and more ] or NULL.
- ** @return     The next line taken from temp content.
- */
-
-static char	*ft_newline(const char *temp)
-{
-	size_t	i;
-
-	i = 0;
-	while (temp[i] != '\0' && temp[i] != '\n')
-		i++;
-	i += (temp[i] == '\n');
-	return (ft_substr (temp, 0, i));
-}
-
-/*
- ** @brief      Update temp to pass to the next line it contains or NULL if
- **             there is nothing left to read.
- **
- ** @param[in]  temp can be the next line [ and more ] or NULL.
+ ** @param[i/o] temp can be the next line [ and more ] or NULL.
  ** @return     A new temp starting from the next line to read or NULL.
  */
 
-static char	*ft_newtemp(char *temp)
+static char	*get_next_line_2(char **temp)
 {
-	char			*new;
-	unsigned int	i;
+	char	*line;
+	char	*ptr;
 
-	i = 0;
-	while (temp[i] != '\0' && temp[i] != '\n')
-		i++;
-	if (temp[i] == '\0')
-		return (free (temp), NULL);
-	i += (temp[i] == '\n');
-	new = ft_substr (temp, i, ft_strlen (temp) - i);
-	return (free (temp), new);
+	if (**temp == '\0')
+	{
+		free (*temp);
+		*temp = NULL;
+		return (NULL);
+	}
+	ptr = *temp;
+	while (*ptr != '\0' && *ptr != '\n')
+		ptr++;
+	ptr += (*ptr == '\n');
+	line = ft_substr (*temp, 0, (size_t)(ptr - *temp));
+	if (!line)
+		return (free (*temp), NULL);
+	ptr = ft_substr (ptr, 0, ft_strlen (ptr));
+	free (*temp);
+	*temp = ptr;
+	return (line);
 }
 
 /*
@@ -82,7 +59,7 @@ static char	*ft_newtemp(char *temp)
  **              - NULL if there are no text left to read on the filedes.
  ** @var        line is the next line to be returned.
  ** @var        buf is for read(2) buffer.
- ** @var        rd is for read(2) return value.
+ ** @var        r is for read(2) return value.
  **
  ** @param[in]  fd the file descriptor.
  ** @return     The line that has just been read or NULL.
@@ -90,29 +67,29 @@ static char	*ft_newtemp(char *temp)
 
 char	*get_next_line(int fd)
 {
-	static char	*temp;
-	char		*line;
+	static char	*temp[OPEN_MAX];
 	char		*buf;
-	long		rd;
+	long		r;
 
 	if (fd == -1 || BUFFER_SIZE < 1)
 		return (NULL);
-	buf = malloc (sizeof (char) * (BUFFER_SIZE + 1));
+	if (!temp[fd])
+		temp[fd] = ft_strdup ("");
+	if (!temp[fd])
+		return (NULL);
+	buf = malloc (sizeof (*buf) * (BUFFER_SIZE + 1));
 	if (!buf)
-		return (NULL);
-	rd = 1;
-	while (rd && !ft_has_nl (temp)) // TODO add ft_has_chr to libft
+		return (free(temp[fd]), NULL);
+	r = 1;
+	while (r && !ft_strchr (temp[fd], '\n'))
 	{
-		rd = read (fd, buf, BUFFER_SIZE);
-		if (rd == -1)
+		r = read (fd, buf, BUFFER_SIZE);
+		if (r == -1)
+			return (free (buf), free (temp[fd]), NULL);
+		buf[r] = '\0';
+		temp[fd] = ft_strjoin_free_s1 (temp[fd], buf);
+		if (!temp[fd])
 			return (free (buf), NULL);
-		buf[rd] = '\0';
-		temp = ft_strjoin_free_s1 (temp, buf);
 	}
-	free (buf);
-	if (!temp)
-		return (NULL);
-	line = ft_newline (temp);
-	temp = ft_newtemp (temp);
-	return (line);
+	return (free (buf), get_next_line_2(temp));
 }
