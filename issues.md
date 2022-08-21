@@ -1,3 +1,5 @@
+protect BUFFER_SIZE (with % INT_MAX?) same for OPEN_MAX
+
 # Newgnl
 
 100% SECURED GNL IMPLEMENTATION
