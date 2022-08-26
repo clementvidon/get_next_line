@@ -12,12 +12,16 @@
 </p>
 
 <h3 align="center">
+	<a href="#Summary">Summary</a>
+	<span> · </span>
 	<a href="#Usage">Usage</a>
 	<span> · </span>
 	<a href="#Tester">Tester</a>
 	<span> · </span>
 	<a href="#Tools">Tools</a>
 </h3>clemedon/get_next_line_42
+
+## Summary
 
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
@@ -26,12 +30,6 @@ file descriptor one line at a time until the end of it.
 > *"May it be a file, stdin, or even later a network connection, you will always
 > need a way to read content line by line. It is time to start working on this
 > function, which will be essential for your future projects."* - [Subject](https://cdn.intra.42.fr/pdf/pdf/57350/en.subject.pdf)
-
-## Index
-
-* **[Usage](#Usage)**<br>
-* **[Tester](#Tester)**<br>
-* **[Tools](#Tools)**<br>
 
 ## Usage
 
