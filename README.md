@@ -1,5 +1,23 @@
 
-# GNL - GET NEXT LINE - 42
+<h1 align="center">
+	GNL - GET NEXT LINE - 42
+</h1>
+
+<p align="center">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/clemedon/get_next_line_42?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/clemedon/get_next_line_42?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/clemedon/get_next_line_42?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/clemedon/get_next_line_42?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/clemedon/get_next_line_42?color=brightgreen" />
+</p>
+
+<h3 align="center">
+	<a href="#Usage">Usage</a>
+	<span> · </span>
+	<a href="#Tester">Tester</a>
+	<span> · </span>
+	<a href="#Tools">Tools</a>
+</h3>clemedon/get_next_line_42
 
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
@@ -76,12 +94,3 @@ multi byte characters like those from binary file or `/dev/urandom` like:
 
 > Add `-g` flag when compiling with `-fsanitize=address` to print errors line
 > numbers instead of addresses in hexadecimal.
-
-<hr>
-<p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/clemedon/get_next_line_42?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/clemedon/get_next_line_42?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/clemedon/get_next_line_42?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/clemedon/get_next_line_42?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/clemedon/get_next_line_42?color=brightgreen" />
-</p>
