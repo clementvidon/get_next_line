@@ -19,7 +19,7 @@
 	<a href="#Tester">Tester</a>
 	<span> · </span>
 	<a href="#Tools">Tools</a>
-</h3>clemedon/get_next_line_42
+</h3><i>clemedon/get_next_line_42</i>
 
 ## Summary
 
