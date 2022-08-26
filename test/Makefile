@@ -28,6 +28,10 @@ fclean: clean
 
 re: fclean all
 
+update:
+	@git pull
+	@git submodule update --init
+
 norm:
 	@norminette ../*.[ch] | grep -v "OK" || true
 
@@ -36,6 +40,6 @@ test:
 
 malloc_test: $(OBJS)
 	@clang -Wall -Wextra -Werror -g -fsanitize=undefined -rdynamic -o $@ $(OBJS) \
-        -Lft_mallocator -lmallocator
+		-Lft_mallocator -lmallocator
 
-.PHONY: all clean fclean re norm test malloc_test
+.PHONY: all clean fclean re update norm test malloc_test
