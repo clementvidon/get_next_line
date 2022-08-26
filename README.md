@@ -1,4 +1,3 @@
-
 <h1 align="center">
 	GNL - GET_NEXT_LINE 42
 </h1>
