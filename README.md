@@ -31,6 +31,10 @@ For example: `./get_next_line main.c`
 - `make fclean` -- deletes object files and get_next_line.
 - `make re` -- fclean + make.
 
+- `make update` -- downlowd submodules and update the repo.
+- `make norm` -- check 42 C norm.
+- `make test` -- run gnltester.sh.
+
 ## Tester
 
 - [Gnltester](test/gnltester.sh) check if the number of characters returned by
