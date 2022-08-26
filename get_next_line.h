@@ -66,8 +66,8 @@ char	*ft_substr(char const *str, unsigned int start, size_t size);
  ** Read each line of the given file, one at a function call.
  */
 
-/* static char *ft_newline(char const *temp) */
-/* static char *ft_newtemp(char *temp) */
+/* static char *ft_next(char **temp) */
+/* static char *ft_read(char *temp, int fd) */
 char	*get_next_line(int fd);
 
 #endif
