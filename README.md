@@ -1,6 +1,6 @@
 
 <h1 align="center">
-	GNL - GET NEXT LINE - 42
+	GNL - GET_NEXT_LINE 42
 </h1>
 
 <h3 align="center">
