@@ -3,14 +3,6 @@
 	GNL - GET NEXT LINE - 42
 </h1>
 
-<p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/clemedon/get_next_line_42?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/clemedon/get_next_line_42?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/clemedon/get_next_line_42?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/clemedon/get_next_line_42?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/clemedon/get_next_line_42?color=brightgreen" />
-</p>
-
 <h3 align="center">
 	<a href="#Summary">Summary</a>
 	<span> · </span>
@@ -20,6 +12,14 @@
 	<span> · </span>
 	<a href="#Tools">Tools</a>
 </h3>
+
+<p align="center">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/clemedon/get_next_line_42?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/clemedon/get_next_line_42?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/clemedon/get_next_line_42?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/clemedon/get_next_line_42?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/clemedon/get_next_line_42?color=brightgreen" />
+</p>
 
 ## Summary
 
