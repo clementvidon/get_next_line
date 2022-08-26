@@ -1,8 +1,6 @@
 
 # GNL - GET NEXT LINE - 42
 
-***Whole code documented with docstrings.***
-
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
 file descriptor one line at a time until the end of it.
@@ -35,6 +33,12 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
+- [Gnltester](test/gnltester.sh) check if the number of characters returned by
+  `get_next_line` call on multiple pre defined input files with a set of
+  different BUFFER_SIZE is correct.  Uses valgrind.
+
+Usage: `make test` or `bash gnltester.sh`
+
 - [Gnldiff](test/gnldiff.sh) is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
@@ -47,7 +51,7 @@ Example:
     cat ../*.[ch] > file; bash gnldiff.sh file
 
 **Make sure to** use a `BUFFER_SIZE` of 1 if your `<file>` parameter contains
-special characters like those from binary file or `/dev/urandom` like:
+multi byte characters like those from binary file or `/dev/urandom` like:
 
     cat /bin/cat > file; bash gnldiff.sh file
 
@@ -55,10 +59,12 @@ special characters like those from binary file or `/dev/urandom` like:
 
 - [gnlTester](https://github.com/Tripouille/gnlTester)
 
-
 ## Tools
 
 - [ft_mallocator](https://github.com/tmatis/ft_mallocator)
+
+> Check with different arguments (ft_mallocator/config.sh:`ARGS`) and buffer
+> size (get_next_line.h:`BUFFER_SIZE`).
 
 - valgrind: `valgrind -q --leak-check=yes --show-leak-kinds=all`
 
