@@ -16,7 +16,7 @@
 
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
-file descriptor one line at a time until the end of it.  The code is written in accordance with The Norm (42 coding style).
+file descriptor one line at a time until the end of it.  The code is written in accordance with 42 coding style and ***all the functions are documented with docstrings***.
 
 > *"May it be a file, stdin, or even later a network connection, you will always
 > need a way to read content line by line. It is time to start working on this
