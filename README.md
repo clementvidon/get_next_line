@@ -16,7 +16,9 @@
 
 Get the next line of text available on a file descriptor.
 Calling get_next_line in a loop will allow us to read the text available on the
-file descriptor one line at a time until the end of it.  The code is written in accordance with 42 coding style and ***all the functions are documented with docstrings***.
+file descriptor one line at a time until the end of it.  
+
+The code is written in accordance with 42 C coding style and ***all the functions are documented with docstrings***.
 
 > *"May it be a file, stdin, or even later a network connection, you will always
 > need a way to read content line by line. It is time to start working on this
@@ -39,7 +41,7 @@ For example: `./get_next_line main.c`
 - `make re` -- fclean + make.
 
 - `make update` -- update the repo to its newer version.
-- `make norm` -- check 42 C norm.
+- `make norm` -- check 42 C coding style.
 - `make test` -- run `gnltester.sh`.
 
 ## Tester
