@@ -29,7 +29,7 @@ fclean: clean
 re: fclean all
 
 san_addr: CC := gcc
-san_addr: CFLAGS := $(CFLAGS) -fsanitize=address,undefined,signed-integer-overflow
+san_addr: CFLAGS := $(CFLAGS) -g -fsanitize=address,undefined,signed-integer-overflow
 san_addr: $(NAME)
 
 update:
