@@ -44,13 +44,13 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
-- [Gnltester](test/gnltester.sh) check if the number of characters returned by
+- **[Gnltester](test/gnltester.sh)** check if the number of characters returned by
   `get_next_line` call on multiple pre defined input files with a set of
   different BUFFER_SIZE is correct.  Uses valgrind.
 
 Usage: `make test` or `bash gnltester.sh`
 
-- [Gnldiff](test/gnldiff.sh) is a simple tester that check `get_next_line` output accuracy and create
+- **[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
 Usage: `bash gnldiff.sh <file_path>`
@@ -68,16 +68,16 @@ multi byte characters like those from binary file or `/dev/urandom` like:
 
     head -4242 /dev/urandom > file; bash gnldiff.sh file
 
-- [gnlTester](https://github.com/Tripouille/gnlTester)
+- **[gnlTester](https://github.com/Tripouille/gnlTester)**
 
 ## Tools
 
-- [ft_mallocator](https://github.com/tmatis/ft_mallocator)
+- **[ft_mallocator](https://github.com/tmatis/ft_mallocator)**
 
 *Check with different arguments (ft_mallocator/config.sh:`ARGS`) and buffer size (get_next_line.h:`BUFFER_SIZE`).*
 
-- valgrind: `valgrind -q --leak-check=yes --show-leak-kinds=all`
+- **valgrind**: `valgrind -q --leak-check=yes --show-leak-kinds=all`
 
-- sanitizer: `-fsanitize=address`
+- **sanitizer**: `-fsanitize=address`
 
 *Add `-g` flag when compiling with `-fsanitize=address` to print errors line numbers instead of addresses in hexadecimal.*
