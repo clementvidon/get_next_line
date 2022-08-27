@@ -74,12 +74,10 @@ multi byte characters like those from binary file or `/dev/urandom` like:
 
 - [ft_mallocator](https://github.com/tmatis/ft_mallocator)
 
-> Check with different arguments (ft_mallocator/config.sh:`ARGS`) and buffer
-> size (get_next_line.h:`BUFFER_SIZE`).
+*Check with different arguments (ft_mallocator/config.sh:`ARGS`) and buffer size (get_next_line.h:`BUFFER_SIZE`).*
 
 - valgrind: `valgrind -q --leak-check=yes --show-leak-kinds=all`
 
 - sanitizer: `-fsanitize=address`
 
-> Add `-g` flag when compiling with `-fsanitize=address` to print errors line
-> numbers instead of addresses in hexadecimal.
+*Add `-g` flag when compiling with `-fsanitize=address` to print errors line numbers instead of addresses in hexadecimal.*
