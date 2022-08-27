@@ -28,6 +28,10 @@ fclean: clean
 
 re: fclean all
 
+san_addr: CC := gcc
+san_addr: CFLAGS := $(CFLAGS) -fsanitize=address,undefined,signed-integer-overflow
+san_addr: $(NAME)
+
 update:
 	@git pull
 	@git submodule update --init
@@ -42,4 +46,4 @@ malloc_test: $(OBJS)
 	@clang -Wall -Wextra -Werror -g -fsanitize=undefined -rdynamic -o $@ $(OBJS) \
 		-Lft_mallocator -lmallocator
 
-.PHONY: all clean fclean re update norm test malloc_test
+.PHONY: all clean fclean re san_addr update norm test malloc_test
