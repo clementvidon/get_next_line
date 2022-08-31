@@ -24,6 +24,8 @@ The code is written in accordance with **42 C** coding style,  **ANSI C89** comp
 > need a way to read content line by line. It is time to start working on this
 > function, which will be essential for your future projects."* - [Subject](https://cdn.intra.42.fr/pdf/pdf/57350/en.subject.pdf)
 
+External functions: `read`, `malloc`, `free`
+
 ## Usage
 
 Add `get_next_line.h` to your project header to access the function.
