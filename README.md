@@ -33,21 +33,13 @@ follows: `./get_next_line <path_to_file>`
 
 For example: `./get_next_line main.c`
 
-***Makefile rules***
-
-- `make` -- compiles get_next_line.
-- `make clean` -- deletes object files.
-- `make fclean` -- deletes object files and get_next_line.
-- `make re` -- fclean + make.
-- `make test` -- run `gnltester.sh`.
-
 ## Tester
 
 - **[Gnltester](test/gnltester.sh)** check if the number of characters returned by
   `get_next_line` call on multiple pre defined input files with a set of
   different BUFFER_SIZE is correct.  Uses valgrind.
 
-Usage: `make test` or `bash gnltester.sh`
+Usage: `make test` or `make && bash gnltester.sh`
 
 - **[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
