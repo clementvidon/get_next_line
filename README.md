@@ -44,7 +44,7 @@ Usage: `make test` or `make && bash gnltester.sh`
 - **[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
-Usage: `bash gnldiff.sh <file_path>`
+Usage: `make && bash gnldiff.sh <file_path>`
 
 Example:
 
