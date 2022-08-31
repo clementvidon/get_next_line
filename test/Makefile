@@ -1,23 +1,57 @@
+# @file     Makefile
+# @brief    Simple Makefile for C function tester.
+# @author   clemedon (Clément Vidon)
+
 NAME		= get_next_line
 
-CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -Wconversion
-CFLAGS		:= $(CFLAGS)
-CPPFLAGS	= -I..
+#------------------------------------------------#
+# INGREDIENTS                                    #
+#------------------------------------------------#
+# CC        compiler
+# CFLAGS    compiler flags
+# CPPFLAGS  preprocessor flags
+# SRCS      source files
+# OBJS      object files
 
-SRCS		= main.c \
-			  ../get_next_line.c \
-			  ../get_next_line_utils.c
+CC			:= clang
+CFLAGS		:= -Wall -Wextra -Werror
+CPPFLAGS	:= -I ..
+SRCS		:= \
+	main.c \
+	../get_next_line.c \
+	../get_next_line_utils.c
 OBJS		:= $(SRCS:%.c=%.o)
 
-RM			= rm -rf
+#------------------------------------------------#
+#   UTENSILS                                     #
+#------------------------------------------------#
+# RM        cleaning command
+# CLS       clear the current line
+
+RM			:= rm -rf
+VALGRIND	:= valgrind -q --leak-check=yes --show-leak-kinds=all
+
+CLS			:= \r\033[K
+
+#------------------------------------------------#
+#   RECIPES                                      #
+#------------------------------------------------#
+# all       build all targets
+# $(NAME)   build $(NAME) target
+# clean     remove objects
+# fclean    remove objects and binary
+# re        remove objects and binary and rebuild all
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(CLS)$(NAME) created."
 
 %.o: %.c
+	@echo -n "$(CLS)Building $(NAME)..."
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
@@ -28,22 +62,33 @@ fclean: clean
 
 re: fclean all
 
-san_addr: CC := gcc
-san_addr: CFLAGS := $(CFLAGS) -g -fsanitize=address,undefined,signed-integer-overflow
-san_addr: $(NAME)
+#------------------------------------------------#
+#   CUSTOM RECIPES                               #
+#------------------------------------------------#
+# san           memory corruption debugging
+# ansi          ANSI c89 compliance
+# every         explore new warnings
+# info          standard build output
+# run           run the program
 
-update:
-	@git pull
-	@git submodule update --init
+.PHONY: sana ansi everything info run
 
-norm:
-	@norminette ../*.[ch] | grep -v "OK" || true
+sana: CC		:= gcc
+sana: RULE		:= sana
+sana: CFLAGS	+= -g -fsanitize=address,undefined,signed-integer-overflow
+sana: $(NAME)
 
-test:
-	@bash gnltester.sh || true
+ansi: CFLAGS	+= -W -Wcast-qual -Wcomma -Wconversion -Wsign-conversion -Wwrite-strings -pedantic -std=c89
+ansi: RULE		:= ansi
+ansi: $(NAME)
 
-malloc_test: $(OBJS)
-	@clang -Wall -Wextra -Werror -g -fsanitize=undefined -rdynamic -o $@ $(OBJS) \
-		-Lft_mallocator -lmallocator
+every: CFLAGS	+= -Weverything
+every: RULE		:= everything
+every: $(NAME)
 
-.PHONY: all clean fclean re san_addr update norm test malloc_test
+info: fclean
+	@make --dry-run | grep -v "echo.*\".*\"\|\[.*\]"
+
+run: $(NAME)
+	$(if $(p), @$(VALGRIND) ./$(NAME) $(p) || true, \
+		@echo "$(CLS)Usage: make run p=\"<params>\"")

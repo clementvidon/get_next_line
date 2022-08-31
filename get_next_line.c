@@ -33,7 +33,10 @@ static char	*ft_next(char **temp)
 	ptr += (*ptr == '\n');
 	line = ft_substr (*temp, 0, (size_t)(ptr - *temp));
 	if (!line)
-		return (free (*temp), NULL);
+	{
+		free (*temp);
+		return (NULL);
+	}
 	ptr = ft_substr (ptr, 0, ft_strlen (ptr));
 	free (*temp);
 	*temp = ptr;
@@ -52,27 +55,27 @@ static char	*ft_next(char **temp)
  **             - NULL if there is nothing left to be read on fd.
  */
 
-static char	*ft_read(char *temp, int fd)
+static char	*ft_read(char *temp, int fd, char *buf)
 {
-	char		*buf;
 	ssize_t		r;
 
-	buf = malloc (sizeof (*buf) * (BUFFER_SIZE + 1));
-	if (!buf)
-	{
-		free (temp);
-		return (NULL);
-	}
 	r = 1;
 	while (r && !ft_strchr (temp, '\n'))
 	{
 		r = read (fd, buf, BUFFER_SIZE);
 		if (r == -1)
-			return (free (buf), free (temp), NULL);
+		{
+			free (buf);
+			free (temp);
+			return (NULL);
+		}
 		buf[r] = 0;
 		temp = ft_strjoin_free_s1 (temp, buf);
 		if (!temp)
-			return (free (buf), NULL);
+		{
+			free (buf);
+			return (NULL);
+		}
 	}
 	free (buf);
 	return (temp);
@@ -94,6 +97,7 @@ static char	*ft_read(char *temp, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*temp[OPEN_MAX];
+	char		*buf;
 
 	if (fd == -1 || BUFFER_SIZE < 1)
 		return (NULL);
@@ -101,7 +105,13 @@ char	*get_next_line(int fd)
 		temp[fd] = ft_strdup("");
 	if (!temp[fd])
 		return (NULL);
-	temp[fd] = ft_read (temp[fd], fd);
+	buf = malloc (sizeof (*buf) * (BUFFER_SIZE + 1));
+	if (!buf)
+	{
+		free (temp[fd]);
+		return (NULL);
+	}
+	temp[fd] = ft_read (temp[fd], fd, buf);
 	if (!temp[fd])
 		return (NULL);
 	if (!*temp[fd])

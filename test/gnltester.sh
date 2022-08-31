@@ -14,6 +14,7 @@ cattotal=0
 
 for file in $testfiles; do
     for bsize in "${bufsizes[@]}"; do
+        make fclean 1>/dev/null
         make -j CFLAGS="-D BUFFER_SIZE=$bsize" 1>/dev/null
         if [ $bsize -eq 0 ]; then
             gnlcount=$($valgrind ./get_next_line $file | wc -m | bc)
@@ -22,9 +23,9 @@ for file in $testfiles; do
             gnlcount=$($valgrind ./get_next_line $file | wc -m | bc)
             catcount=$(cat $file | wc -m | bc)
         fi
+        make fclean 1>/dev/null
         gnltotal=$(( $gnltotal + $gnlcount ))
         cattotal=$(( $cattotal + $catcount ))
-        make fclean
         clear
         echo "Read: $gnlcount/$catcount"
         echo "file=$file"

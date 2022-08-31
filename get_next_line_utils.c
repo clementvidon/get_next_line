@@ -32,7 +32,7 @@ char	*ft_strchr(char const *s, int c)
 	while (*s && *s != (unsigned char)c)
 		++s;
 	if (*s == (unsigned char)c)
-		return ((char *)s);
+		return ((char *)(unsigned long)s);
 	else
 		return (0);
 }
@@ -78,7 +78,8 @@ char	*ft_strdup(char const *str)
 	ptr = dup;
 	while (*str)
 		*ptr++ = *str++;
-	return (*ptr = 0, dup);
+	*ptr = 0;
+	return (dup);
 }
 
 /*
@@ -97,14 +98,19 @@ char	*ft_strjoin_free_s1(char *s1, char const *s2)
 
 	s3 = malloc (sizeof (*s3) * (ft_strlen (s1) + ft_strlen (s2) + 1));
 	if (!s3)
-		return (free (s1), NULL);
+	{
+		free (s1);
+		return (NULL);
+	}
 	p3 = s3;
 	p1 = s1;
 	while (*p1)
 		*p3++ = *p1++;
 	while (*s2)
 		*p3++ = *s2++;
-	return (free (s1), *p3 = 0, s3);
+	*p3 = 0;
+	free (s1);
+	return (s3);
 }
 
 /*
