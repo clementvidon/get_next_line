@@ -35,7 +35,7 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
-*First of all `cd test && make`.*
+**First of all** `cd test && make`.
 
 - **[Gnltester](test/gnltester.sh)** check if the number of characters returned by
   `get_next_line` call on multiple pre defined input files with a set of
