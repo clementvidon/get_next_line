@@ -35,16 +35,18 @@ For example: `./get_next_line main.c`
 
 ## Tester
 
+*First of all `cd test && make`.*
+
 - **[Gnltester](test/gnltester.sh)** check if the number of characters returned by
   `get_next_line` call on multiple pre defined input files with a set of
   different BUFFER_SIZE is correct.  Uses valgrind.
 
-Usage: `make test` or `make && bash gnltester.sh`
+Usage: `make test` or `bash gnltester.sh`
 
 - **[Gnldiff](test/gnldiff.sh)** is a simple tester that check `get_next_line` output accuracy and create
 a `diff.log` file if something went wrong.
 
-Usage: `make && bash gnldiff.sh <file_path>`
+Usage: `bash gnldiff.sh <file_path>`
 
 Example:
 
